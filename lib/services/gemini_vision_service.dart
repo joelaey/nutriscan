@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import '../models/nutrition_data.dart';
+import '../config/api_config.dart';
 
 /// Gemini Vision API Service untuk Nutrition Label Scanning
 /// Menggunakan Google Gemini 2.5 Flash untuk akurasi tinggi
 class GeminiVisionService {
-  static const String _apiKey = 'AIzaSyCvpQXt-jy3b7x3FfYQm9AAbaKd0YHThLk';
-  static const String _baseUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
+  static String get _apiKey => ApiConfig.geminiApiKey;
+  static String get _baseUrl => ApiConfig.geminiBaseUrl;
 
   /// Extract nutrition data dari gambar menggunakan Gemini Vision
   Future<GeminiNutritionResult> extractNutrition(File imageFile) async {
